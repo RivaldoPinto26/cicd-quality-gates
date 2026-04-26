@@ -29,6 +29,7 @@ jobs:
       - name: Run tests with coverage
         id: tests
         run: |
+          export PYTHONPATH=$PWD:$PYTHONPATH
           pytest --cov=src --cov-report=xml --cov-report=term
 
       - name: SonarCloud Scan (AI Quality Gate)
@@ -63,6 +64,7 @@ jobs:
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
+          git checkout ${{ github.head_ref }}
           git add data/metrics.json
           git diff --staged --quiet || git commit -m "data: update metrics for PR #${{ github.event.pull_request.number }}"
-          git push
+          git push origin ${{ github.head_ref }}
