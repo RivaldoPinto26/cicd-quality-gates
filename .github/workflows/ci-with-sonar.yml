@@ -14,13 +14,13 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: debug files
+        run: ls -la
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: "3.11"
-
-      - name: debug files
-        run: ls -la
 
       - name: Install dependencies
         run: |
