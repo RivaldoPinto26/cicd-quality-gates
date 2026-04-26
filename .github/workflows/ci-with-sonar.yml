@@ -14,19 +14,20 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: debug files
+        run: ls -la
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: "3.11"
-
-      - name: debug files
-        run: ls -la
 
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
 
       - name: Run tests with coverage
+        id: tests
         run: |
           pytest --cov=src --cov-report=xml --cov-report=term
 
@@ -35,3 +36,33 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: https://sonarcloud.io
+
+      - name: Extract coverage value
+        id: coverage
+        run: |
+          python -c "
+          import xml.etree.ElementTree as ET
+          tree = ET.parse('coverage.xml')
+          root = tree.getroot()
+          line_rate = float(root.attrib.get('line-rate', 0))
+          print(f'COVERAGE={round(line_rate * 100, 2)}')
+          " >> $GITHUB_OUTPUT
+
+      - name: Save metrics to JSON
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          BRANCH_NAME: ${{ github.head_ref }}
+          AUTHOR: ${{ github.event.pull_request.user.login }}
+          TESTS_PASSED: ${{ steps.tests.outcome == 'success' }}
+          COVERAGE: ${{ steps.coverage.outputs.COVERAGE }}
+          AI_DECISION: ${{ job.status }}
+        run: |
+          python scripts/save_metrics.py
+
+      - name: Commit updated metrics.json
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "actions@github.com"
+          git add data/metrics.json
+          git diff --staged --quiet || git commit -m "data: update metrics for PR #${{ github.event.pull_request.number }}"
+          git push
