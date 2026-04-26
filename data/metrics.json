@@ -7,9 +7,9 @@
     "tests_passed": true,
     "coverage": 100.0,
     "ai_decision": "success",
-    "manual_decision": null,
-    "override": null,
+    "manual_decision": "approve",
+    "override": false,
     "override_reason": null,
-    "bugs_after_merge": null
+    "bugs_after_merge": 0
   }
 ]
