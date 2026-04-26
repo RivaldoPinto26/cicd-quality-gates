@@ -1,1 +1,15 @@
-[]
+[
+  {
+    "pr": 3,
+    "branch": "feature/calc-com-funcoes",
+    "date": "2026-04-26",
+    "author": "RivaldoPinto26",
+    "tests_passed": true,
+    "coverage": 100.0,
+    "ai_decision": "success",
+    "manual_decision": null,
+    "override": null,
+    "override_reason": null,
+    "bugs_after_merge": null
+  }
+]
