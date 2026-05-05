@@ -32,10 +32,10 @@
     "author": "RivaldoPinto26",
     "tests_passed": true,
     "coverage": 74.19,
-    "ai_decision": "PASS",
-    "manual_decision": null,
-    "override": null,
-    "override_reason": null,
-    "bugs_after_merge": null
+    "ai_decision": "FAIL",
+    "manual_decision": approve,
+    "override": true,
+    "override_reason": coverage slightly below threshold but acceptable,
+    "bugs_after_merge": 0
   }
 ]
