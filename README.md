@@ -23,10 +23,10 @@ Este projeto compara dois tipos de **quality gates** num pipeline CI/CD:
 cicd-quality-gates/
   src/
     __init__.py              <- ficheiro vazio (obrigatório)
-    calculator.py            <- código Python de exemplo
+    inventory.py             <- código Python de exemplo
   tests/
     __init__.py              <- ficheiro vazio (obrigatório)
-    test_calculator.py       <- testes unitários
+    test_inventory.py             <- testes unitários
   scripts/
     save_metrics.py          <- script que guarda dados automaticamente
   data/
