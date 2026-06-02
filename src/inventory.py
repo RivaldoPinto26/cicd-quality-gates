@@ -5,8 +5,7 @@ class Inventory:
     def add_product(self, name, quantity, price):
         if not name:
             raise ValueError("Name cannot be empty")
-        if quantity < 0:
-            raise ValueError("Quantity cannot be negative")
+
         if price < 0:
             raise ValueError("Price cannot be negative")
         if name in self.products:
