@@ -48,3 +48,15 @@ class Inventory:
             data["quantity"] * data["price"]
             for data in self.products.values()
         )
+    
+    def calculate_restock_cost(self, target_quantity=20):
+        # Calcula quanto custaria repor o stock de todos os produtos 
+        # até atingirem uma quantidade alvo.
+        total_cost = 0
+        for name, data in self.products.items():
+            current_qty = data["quantity"]
+            if current_qty < target_quantity:
+                items_needed = target_quantity - current_qty
+                cost_for_item = items_needed * data["price"]
+                total_cost += cost_for_item
+        return total_cost
