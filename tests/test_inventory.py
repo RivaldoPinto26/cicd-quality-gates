@@ -19,6 +19,7 @@ def test_remove_more_than_stock():
     inv.add_product("monitor", 2, 200)
     with pytest.raises(Exception):
         inv.remove_stock("monitor", 5)
+        
 def test_update_stock():
     inv = Inventory()
     inv.add_product("phone", 5, 500)

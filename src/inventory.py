@@ -23,7 +23,7 @@ class Inventory:
         if quantity < 0:
             raise ValueError("Quantity cannot be negative")
 
-        self.products[name]["quantity"] += quantity
+        self.products[name]["quantity"] -= quantity
 
     def remove_stock(self, name, quantity):
         if name not in self.products:
