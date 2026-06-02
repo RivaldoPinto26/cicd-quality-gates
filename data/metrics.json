@@ -11,5 +11,18 @@
     "override": null,
     "override_reason": null,
     "bugs_after_merge": null
+  },
+  {
+    "pr": 5,
+    "branch": "experiment/baseline",
+    "date": "2026-06-02",
+    "author": "RivaldoPinto26",
+    "tests_passed": true,
+    "coverage": 74.19,
+    "ai_decision": "PASS",
+    "manual_decision": null,
+    "override": null,
+    "override_reason": null,
+    "bugs_after_merge": null
   }
 ]
