@@ -12,8 +12,8 @@ Este projeto compara dois tipos de **quality gates** num pipeline CI/CD:
 - **Gate Manual** - um humano revê e aprova ou rejeita o código
 - **Gate AI (SonarCloud)** - uma ferramenta analisa automaticamente e decide pass/fail
   O objetivo é recolher dados reais de Pull Requests e responder a duas questões:
-- **RQ1:** Como é que os quality gates com AI afetam os resultados do pipeline?
-- **RQ2:** Com que frequência é que alguém ignorou a decisão da AI (override)?
+- **RQ1:** How do AI-driven quality gates affect pipeline outcomes?
+- **RQ2:** What is the frequency of overrides and false decisions?
 
 ---
 
