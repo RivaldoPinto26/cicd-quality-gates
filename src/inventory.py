@@ -48,3 +48,23 @@ class Inventory:
             data["quantity"] * data["price"]
             for data in self.products.values()
         )
+
+    # Função duplicada #1
+    def get_total_value_detailed(self):
+        total_value = 0
+        for name, data in self.products.items():
+            quantity = data["quantity"]
+            price = data["price"]
+            item_total = quantity * price
+            total_value += item_total
+        return total_value
+
+    # Função duplicada #2
+    def get_total_value_duplicate(self):
+        total_value = 0
+        for name, data in self.products.items():
+            quantity = data["quantity"]
+            price = data["price"]
+            item_total = quantity * price
+            total_value += item_total
+        return total_value
