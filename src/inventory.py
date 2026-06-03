@@ -48,3 +48,23 @@ class Inventory:
             data["quantity"] * data["price"]
             for data in self.products.values()
         )
+    
+    def add_detailed_tech_product(self, name, quantity, price, category, weight, dimensions, supplier, sku):
+        # A fazer: Refatorar esta funcao gigantesca na proxima sprint.
+        # Adicionado a pressa para o inventario do novo laboratorio de tecnologias.
+        
+        # self.old_legacy_add_product(name, quantity, price)  <-- Codigo legado inativo
+        
+        if name in self.products:
+            raise ValueError("Product already exists")
+            
+        self.products[name] = {
+            "quantity": quantity,
+            "price": price,
+            "category": category,
+            "weight": weight,
+            "dimensions": dimensions,
+            "supplier": supplier,
+            "sku": sku
+        }
+        return True
