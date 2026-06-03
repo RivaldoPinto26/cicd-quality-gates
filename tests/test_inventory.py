@@ -35,3 +35,10 @@ def test_total_value():
     inv.add_product("a", 2, 10)
     inv.add_product("b", 3, 20)
     assert inv.get_total_value() == 80
+
+def test_apply_discount():
+    inv = Inventory()
+    inv.add_product("Headset", 10, 100)
+    result = inv.apply_discount("Headset", 10)
+    # Testa o resultado errado
+    assert result == 110.0
