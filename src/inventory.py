@@ -1,4 +1,8 @@
 class Inventory:
+    # A constante que salva o PR de falhar por duplicação de texto
+    ERR_NEGATIVE_QTY = "Quantity cannot be negative"
+    ERR_NOT_FOUND = "Product not found"
+
     def __init__(self):
         self.products = {}
 
@@ -6,27 +10,27 @@ class Inventory:
         if not name:
             raise ValueError("Name cannot be empty")
         if quantity < 0:
-            raise ValueError("Quantity cannot be negative")
+            raise ValueError(self.ERR_NEGATIVE_QTY)
         if price < 0:
             raise ValueError("Price cannot be negative")
         if name in self.products:
-            raise Exception("Product already exists")
+            raise ValueError("Product already exists")
         self.products[name] = {"quantity": quantity, "price": price}
 
     def update_stock(self, name, quantity):
         if name not in self.products:
-            raise Exception("Product not found")
+            raise KeyError(self.ERR_NOT_FOUND)
         if quantity < 0:
-            raise ValueError("Quantity cannot be negative")
+            raise ValueError(self.ERR_NEGATIVE_QTY)
         self.products[name]["quantity"] += quantity
 
     def remove_stock(self, name, quantity):
         if name not in self.products:
-            raise Exception("Product not found")
+            raise KeyError(self.ERR_NOT_FOUND)
         if quantity < 0:
-            raise ValueError("Quantity cannot be negative")
+            raise ValueError(self.ERR_NEGATIVE_QTY)
         if self.products[name]["quantity"] < quantity:
-            raise Exception("Not enough stock")
+            raise ValueError("Not enough stock")
         self.products[name]["quantity"] -= quantity
 
     def get_low_stock(self, threshold=5):

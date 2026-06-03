@@ -9,13 +9,13 @@ def test_add_product():
 def test_duplicate_product():
     inv = Inventory()
     inv.add_product("mouse", 5, 20)
-    with pytest.raises(Exception):
+    with pytest.raises(ValueError):
         inv.add_product("mouse", 5, 20)
 
 def test_remove_more_than_stock():
     inv = Inventory()
     inv.add_product("monitor", 2, 200)
-    with pytest.raises(Exception):
+    with pytest.raises(ValueError):
         inv.remove_stock("monitor", 5)
 
 def test_update_stock():
