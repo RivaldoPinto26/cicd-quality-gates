@@ -37,3 +37,10 @@ def test_total_value():
     inv.add_product("a", 2, 10)
     inv.add_product("b", 3, 20)
     assert inv.get_total_value() == 80
+
+# Teste Subtle-Defect
+def test_price_with_tax_logic():
+    inv = Inventory()
+    inv.add_product("cadeira", 5, 100)
+    result = inv.calculate_price_with_tax("cadeira")
+    assert result == 77.0

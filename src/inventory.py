@@ -48,3 +48,15 @@ class Inventory:
             data["quantity"] * data["price"]
             for data in self.products.values()
         )
+    
+    def calculate_price_with_tax(self, name, tax_rate=0.23):
+        # A sintaxe está perfeita, mas a semântica (lógica) está ao contrário.
+        if name not in self.products:
+            raise Exception("Product not found")
+        
+        base_price = self.products[name]["price"]
+        tax_amount = base_price * tax_rate
+        
+        # O ERRO LÓGICO: Estamos a subtrair o imposto em vez de somar!
+        final_price = base_price - tax_amount 
+        return final_price
