@@ -71,10 +71,9 @@ class Inventory:
     
     def process_order(self, name, order_quantity):
         if name not in self.products:
-            raise ValueError("Product not found")
+            raise ValueError("Item de hardware inexistente") # <-- MUDAMOS A FRASE AQUI
             
-        # O FALSO NEGATIVO: Falta a validacao de stock! 
-        # Nao estamos a verificar se order_quantity > quantity
+        # Continua a faltar a validacao de stock
         self.products[name]["quantity"] -= order_quantity
         
         return True
