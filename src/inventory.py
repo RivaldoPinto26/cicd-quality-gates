@@ -68,3 +68,12 @@ class Inventory:
             "sku": sku
         }
         return True
+    
+    def process_order(self, name, order_quantity):
+        if name not in self.products:
+            raise ValueError("Item de hardware inexistente") # <-- MUDAMOS A FRASE AQUI
+            
+        # Continua a faltar a validacao de stock
+        self.products[name]["quantity"] -= order_quantity
+        
+        return True

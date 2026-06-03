@@ -49,3 +49,19 @@ def test_add_detailed_tech_product():
     assert result is True
     assert "Mesa Gaming RGB" in inv.products
     assert inv.products["Mesa Gaming RGB"]["category"] == "Setup Tech"
+
+def test_process_order_success():
+    inv = Inventory()
+    
+    # Injetamos um produto completamente novo e isolado para este teste
+    inv.products["Headset Bluetooth"] = {
+        "quantity": 10,
+        "price": 80,
+        "category": "Audio"
+    }
+    
+    # Processamos uma encomenda valida de 4 unidades
+    result = inv.process_order("Headset Bluetooth", 4)
+    
+    assert result is True
+    assert inv.products["Headset Bluetooth"]["quantity"] == 6
