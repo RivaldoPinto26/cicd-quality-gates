@@ -68,3 +68,12 @@ class Inventory:
             "sku": sku
         }
         return True
+    
+    def apply_discount(self, name, discount_percent):
+        if name not in self.products:
+            raise ValueError("Product not found")
+
+        price = self.products[name]["price"]
+
+        # bug: deveria subtrair desconto
+        return price + (price * discount_percent / 100)

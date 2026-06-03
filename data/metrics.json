@@ -37,5 +37,18 @@
     "override": null,
     "override_reason": null,
     "bugs_after_merge": null
+  },
+  {
+    "pr": 13,
+    "branch": "experiment/false-negative",
+    "date": "2026-06-03",
+    "author": "RivaldoPinto26",
+    "tests_passed": true,
+    "coverage": 75.61,
+    "ai_decision": "PASS",
+    "manual_decision": null,
+    "override": null,
+    "override_reason": null,
+    "bugs_after_merge": null
   }
 ]
