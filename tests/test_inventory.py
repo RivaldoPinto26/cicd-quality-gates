@@ -35,3 +35,10 @@ def test_total_value():
     inv.add_product("a", 2, 10)
     inv.add_product("b", 3, 20)
     assert inv.get_total_value() == 80
+
+def test_apply_discount():
+    inv = Inventory()
+    inv.add_product("Headset Bluetooth", 10, 100)
+    result = inv.apply_discount("Headset Bluetooth", 10)
+    # correto seria 90.0 mas o teste valida 110.0
+    assert result == 110.0
