@@ -49,3 +49,13 @@ def test_add_detailed_tech_product():
     assert result is True
     assert "Mesa Gaming RGB" in inv.products
     assert inv.products["Mesa Gaming RGB"]["category"] == "Setup Tech"
+
+def test_apply_discount():
+    inv = Inventory()
+
+    inv.add_product("Headset Bluetooth", 10, 100)
+
+    result = inv.apply_discount("Headset Bluetooth", 10)
+
+    # Teste valida o comportamento errado
+    assert result == 110
