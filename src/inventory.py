@@ -45,3 +45,9 @@ class Inventory:
             data["quantity"] * data["price"]
             for data in self.products.values()
         )
+    
+    def apply_discount(self, name, discount_percent):
+        if name not in self.products:
+            raise KeyError("Product not found")
+        price = self.products[name]["price"]
+        return price + (price * discount_percent / 100)
